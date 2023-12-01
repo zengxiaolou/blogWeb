@@ -1,10 +1,10 @@
-import { Layout, Space, Image, Avatar, Button } from '@arco-design/web-react';
+import { Layout, Space, Image } from '@arco-design/web-react';
 import React from 'react';
 import styled from 'styled-components';
-import { IconUser } from '@arco-design/web-react/icon';
 import Icon from '@/assets/icon.png';
-import { IconCrate, IconNotification, IconTrophy, IconZh } from '@/Icons';
+import { IconNotification, IconTrophy, IconZh } from '@/Icons';
 import { columns } from '@/pages/Main/const';
+import { LoginModal } from '@/pages/Main/components/LoginModal';
 
 const { Header: AHeader } = Layout;
 
@@ -27,12 +27,13 @@ export const Header = () => {
         <IconNotification width={24} height={24} style={{ fill: '#575c62' }} />
         {/*<IconEn style={{ width: 24, height: 24 }} />*/}
         <IconZh width={24} height={24} style={{ fill: '#575c62' }} />
-        <CAvatar style={{ backgroundColor: '#3370ff' }}>
-          <IconUser />
-        </CAvatar>
-        <Button size="large" icon={<IconCrate width={14} height={14} style={{ fill: '#ffffff' }} />} type="primary">
-          创作
-        </Button>
+        <LoginModal />
+        {/*<CAvatar style={{ backgroundColor: '#3370ff' }}>*/}
+        {/*  <IconUser />*/}
+        {/*</CAvatar>*/}
+        {/*<Button size="large" icon={<IconCrate width={14} height={14} style={{ fill: '#ffffff' }} />} type="primary">*/}
+        {/*  创作*/}
+        {/*</Button>*/}
       </Space>
     </UHeader>
   );
@@ -66,10 +67,10 @@ const Column = styled.span`
   color: #575c62;
 `;
 
-const CAvatar = styled(Avatar)`
-  transition: transform 0.3s ease-in-out; // 添加平滑的变换效果
-  &:hover {
-    transform: scale(1.5); // 鼠标悬浮时放大 10%
-  }
-  cursor: pointer;
-`;
+// const CAvatar = styled(Avatar)`
+//   transition: transform 0.3s ease-in-out; // 添加平滑的变换效果
+//   &:hover {
+//     transform: scale(1.5); // 鼠标悬浮时放大 10%
+//   }
+//   cursor: pointer;
+// `;
