@@ -14,16 +14,28 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(
   // @ts-ignore
   (response: AxiosResponse<ApiResponse>) => {
-    if (response.data.metadata.code !== 'ok') {
+    if (response?.data?.metadata?.code !== 'ok') {
       return Promise.reject(new Error(response?.data?.metadata?.message || '未知错误'));
     }
-    return response.data;
+    return response;
   },
   (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      Cookie.remove('token');
+    const { message, ...restError } = error;
+    if (error.response) {
+      if (error.response.status === 401) {
+        Cookie.remove('token');
+      }
+    } else if (error.request) {
+      console.error('No response was received');
+    } else {
+      console.error('Error', message);
     }
-    return Promise.reject(error);
+
+    return Promise.reject({
+      // @ts-ignore
+      message: error?.response?.data?.message || message || '网络请求错误',
+      ...restError,
+    });
   }
 );
 

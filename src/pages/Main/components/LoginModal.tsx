@@ -13,7 +13,7 @@ export const LoginModal = () => {
     <>
       <Login onClick={() => open()}>登录</Login>
       {/* eslint-disable-next-line unicorn/no-null*/}
-      <UModal visible={visible} onCancel={close} footer={null} closeIcon={null}>
+      <UModal visible={visible} onCancel={close} footer={null} closeIcon={null} unmountOnExit={true}>
         <Tabs activeTab={active} onChange={setActive}>
           <TabPane title="登录" key="login"></TabPane>
           <TabPane title="注册" key="register">

@@ -6,9 +6,10 @@ interface PopoverFormItemProperties extends InputProps {
   rules?: RulesProps[];
   onChange?: (value: string) => void;
   value?: string;
+  isPassword?: boolean;
 }
 
-const InputPopoverVerify: FC<PopoverFormItemProperties> = ({ rules, onChange, value, ...rest }) => {
+const InputPopoverVerify: FC<PopoverFormItemProperties> = ({ rules, onChange, value, isPassword, ...rest }) => {
   // eslint-disable-next-line complexity
   const validateRule = (rule: RulesProps) => {
     if (rule.required && !value) {
@@ -17,7 +18,7 @@ const InputPopoverVerify: FC<PopoverFormItemProperties> = ({ rules, onChange, va
     if (rule.type && typeof value !== rule.type) {
       return false;
     }
-    if (rule?.deepEqual && (!value || !rule.deepEqual(value))) {
+    if (rule?.deepEqual && (!value || rule?.deepEqual !== value)) {
       return false;
     }
     if (rule.minLength && (!value || value.length < rule.minLength)) {
@@ -55,8 +56,12 @@ const InputPopoverVerify: FC<PopoverFormItemProperties> = ({ rules, onChange, va
     ));
   };
   return (
-    <Popover content={renderValidationContent()} position="bottom">
-      <Input value={value} onChange={onChange} {...rest} allowClear />
+    <Popover content={renderValidationContent()} position="right" getPopupContainer={() => document.body}>
+      {isPassword ? (
+        <Input.Password {...rest} value={value} onChange={onChange} allowClear />
+      ) : (
+        <Input {...rest} value={value} onChange={onChange} allowClear />
+      )}
     </Popover>
   );
 };
