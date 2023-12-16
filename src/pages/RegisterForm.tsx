@@ -13,7 +13,7 @@ interface properties {
   onSubmit: () => void;
 }
 
-export const RegisterForm: FC<properties> = ({ onSubmit }) => {
+const RegisterForm: FC<properties> = ({ onSubmit }) => {
   const [countdown, setCountdown] = useState(0);
 
   const [form] = Form.useForm();
@@ -105,3 +105,5 @@ export const RegisterForm: FC<properties> = ({ onSubmit }) => {
 const Register = styled(Button)`
   border-radius: 25px;
 `;
+
+export default RegisterForm;

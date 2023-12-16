@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Main } from './pages/Main';
+import Main from './pages';
 import '@arco-design/web-react/dist/css/arco.css';
 
 export const App = () => {

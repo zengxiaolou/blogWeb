@@ -47,7 +47,9 @@
     "react-hooks/exhaustive-deps": "warn",
     "complexity": ["error", { "max": 10 }],
     "optimize-regex/optimize-regex": "warn",
-    "unicorn/prefer-module": "off"
+    "unicorn/prefer-module": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2022,
