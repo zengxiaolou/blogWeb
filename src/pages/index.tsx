@@ -12,11 +12,11 @@ const Main = () => {
   const [isEntering, setIsEntering] = useState(true);
 
   const switchMethod = (newMethod: string) => {
-    setIsEntering(false); // 开始淡出动画
+    setIsEntering(false);
     setTimeout(() => {
-      setMethod(newMethod); // 切换方法
-      setIsEntering(true); // 开始淡入动画
-    }, 500); // 这里的延迟时间应该与你的动画时间相匹配
+      setMethod(newMethod);
+      setIsEntering(true);
+    }, 500);
   };
 
   return (
