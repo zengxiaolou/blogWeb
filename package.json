@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/i18next": "^13.0.0",
     "@types/js-cookie": "^3.0.6",
     "@types/jsdom": "^21.1.4",

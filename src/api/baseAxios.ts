@@ -17,6 +17,15 @@ axios.interceptors.response.use(
     if (response?.data?.metadata?.code !== 'ok') {
       return Promise.reject(new Error(response?.data?.metadata?.message || '未知错误'));
     }
+    if (response?.config?.url  &&   ['/api/signin',  '/api/signup'].includes(response.config.url)) {
+      const token = response.data.result.token;
+      if (token) {
+        Cookie.set('token', token);
+      }
+      if (response.config.url === '/api/logout') {
+        Cookie.remove('token');
+      }
+    }
     return response;
   },
   (error: AxiosError) => {

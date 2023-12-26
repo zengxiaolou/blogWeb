@@ -6,12 +6,12 @@ import {
 } from '@/api/types/users';
 import { UseApiOptions, useRequest } from '@/api/useRequest';
 
-const baseURL = 'http://localhost:9090/users';
+const baseURL = 'http://localhost:9090/api/auth';
 
 export const useGetRegisterCode = (data?: GetRegisterCodeRequest, options?: UseApiOptions) => {
   return useRequest<GetRegisterCodeResponse>(
     {
-      url: '/register-code',
+      url: '/register/code',
       method: 'POST',
       data,
       baseURL,
@@ -23,7 +23,7 @@ export const useGetRegisterCode = (data?: GetRegisterCodeRequest, options?: UseA
 export const useCreateUser = (data?: CreateUserRequest, options?: UseApiOptions) => {
   return useRequest<CreateUserResponse>(
     {
-      url: '/create',
+      url: '/register',
       method: 'POST',
       data,
       baseURL,
