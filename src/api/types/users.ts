@@ -8,6 +8,10 @@ export interface GetRegisterCodeResponse extends ApiResponse {
   result: boolean;
 }
 
+export interface Token {
+  token: string;
+}
+
 export interface CreateUserRequest {
   email: string;
   username: string;
@@ -16,5 +20,14 @@ export interface CreateUserRequest {
 }
 
 export interface CreateUserResponse extends ApiResponse {
-  result: boolean;
+  result: Token;
+}
+
+export interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+export interface LoginResponse extends ApiResponse {
+  result: Token;
 }
